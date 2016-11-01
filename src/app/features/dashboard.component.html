@@ -1,0 +1,23 @@
+<header>
+  <h3> Welcome to the Dashboard {{user.name}}!</h3>
+</header>
+<section>
+  <form [formGroup]="form" (ngSubmit)="submitState()" autocomplete="off">
+    <md-input formControlName="order" [placeholder]="orderLabel"></md-input><br>
+    <md-input formControlName="sort" [placeholder]="sortLabel"></md-input><br>
+    <md-input formControlName="tagged" [placeholder]="taggedLabel"></md-input><br>
+    <md-input formControlName="site" [placeholder]="siteLabel"></md-input><br>
+
+    <button md-raised-button color="primary">Update store</button>
+    <button md-raised-button color="accent" type="button" (click)="clearName()">Clear name</button>
+  </form>
+  <br><br>
+    <button id="my-logout-button" md-raised-button color="accent" (click)="logout()">Logout</button>
+    
+    <br><br>
+
+    <div *ngFor="let question of questions$ | async">
+    {{ question | json }}
+    <br><br>
+    </div>
+</section>
